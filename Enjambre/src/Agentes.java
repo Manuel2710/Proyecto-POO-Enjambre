@@ -1,4 +1,3 @@
-package Enjambre;
 public abstract class Agentes {
     public int Tamaño;
     public boolean Recurso;
@@ -11,6 +10,8 @@ public abstract class Agentes {
     public int PosicionYrecurso= 0;
     public int PosicionXbase=0;
     public int PosicionYbase= 0;
+    public int posicion=0;
+    public int siguiendo=0;
     
     public abstract void DetectarRecurso();
     public abstract void DetectarAgente();

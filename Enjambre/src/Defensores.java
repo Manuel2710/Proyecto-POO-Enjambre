@@ -1,7 +1,8 @@
-package Enjambre;
-public class Recolectores extends Agentes{
-    
-    public Recolectores(){
+
+public class Defensores extends Agentes{
+
+    public Defensores(){
+        
         Tamaño = 1;
         Recurso = false;
         Amenaza = 1;
@@ -13,10 +14,21 @@ public class Recolectores extends Agentes{
         PosicionYrecurso=0;
         PosicionXbase=0;//Donde se encuentre la base
         PosicionYbase=0;
+        posicion=0;
+        siguiendo=0;
     }
 
-    public void DetectarRecurso(){
+    
 
+    @Override
+    public String toString() {
+        return "Defensores []" + Recurso + Movimiento;
+    }
+
+
+
+    public void DetectarRecurso(){
+        System.out.println(Movimiento);
     }
     public void DetectarAgente(){
 
@@ -25,6 +37,9 @@ public class Recolectores extends Agentes{
 
     }
     public void AtacarRecurso(){
+
+    }
+    public void AtacarAmenaza(){
 
     }
     public void MoverAgente(){
