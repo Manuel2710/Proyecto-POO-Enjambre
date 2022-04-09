@@ -1,4 +1,4 @@
-import javax.swing.JOptionPane;
+/*import javax.swing.JOptionPane;
 
 public class lista {
     protected Nodo inicio,fin;
@@ -32,7 +32,7 @@ public class lista {
         }
 
     }
-    public void mostrar(){
+    public void ejecutar(){
         if (Vacio()){
             JOptionPane.showMessageDialog((null), "vacio");
             return;
@@ -42,9 +42,15 @@ public class lista {
             temporal=inicio;
             while(temporal!=null)
             {
-                JOptionPane.showMessageDialog(null, temporal.getDato().toString());
+                //JOptionPane.showMessageDialog(null, temporal.getDato().toString());
+                temporal.getDato().DetectarRecurso();
+                temporal.getDato().DetectarAgente();
+                temporal.getDato().DetectarAmenaza();
+                temporal.getDato().AtacarRecurso();
+                temporal.getDato().MoverAgente();
                 temporal=temporal.getSiguiente();
             }
         }
     }
 }
+*/

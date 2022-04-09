@@ -1,4 +1,4 @@
-public class Nodo {
+/*public class Nodo {
     private Nodo siguiente;
     private Agentes dato;
 
@@ -24,4 +24,4 @@ public class Nodo {
     }
 
     
-}
+}*/

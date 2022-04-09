@@ -1,44 +1,36 @@
-
+import java.util.Random;
 public class Recolectores extends Agentes{
-    
+    Random rand = new Random();
     public Recolectores(){
-        Tamaño = 1;
-        Recurso = false;
-        Amenaza = 1;
-        EspaciosAmenaza = 10;
-        Movimiento = "Derecha";
-        PosicionX=0;//Donde aparezcan
-        PosicionY=0;
-        PosicionXrecurso=0;//Ubicación default fuera del 50x50
-        PosicionYrecurso=0;
-        PosicionXbase=0;//Donde se encuentre la base
-        PosicionYbase=0;
-        posicion=0;
-        siguiendo=0;
+        this.Tamaño = 1;
+        this.Recurso = false;
+        this.Amenaza = 1;
+        this.EspaciosAmenaza = 10;
+        this.Movimiento = "Derecha";
+        this.PosicionX= rand.nextInt(700+1);//Donde aparezcan
+        this.PosicionY= rand.nextInt(700+1);;
+        this.PosicionXrecurso=0;//Ubicación default fuera del 50x50
+        this.PosicionYrecurso=0;
+        this.PosicionXbase=0;//Donde se encuentre la base
+        this.PosicionYbase=0;
+        this.posicion=0;
+        this.siguiendo=0;
     }
-
-
-    
-    @Override
-    public String toString() {
-        return "Recolectores []" + Recurso + Movimiento;
-    }
-
-
 
     public void DetectarRecurso(){
-        System.out.println(Movimiento);
+        System.out.println(PosicionX);
+        System.out.println(PosicionY);
     }
     public void DetectarAgente(){
-
+        DetectarRecurso();
     }
     public void DetectarAmenaza(){
-
+        DetectarRecurso();
     }
     public void AtacarRecurso(){
-
+        DetectarRecurso();
     }
     public void MoverAgente(){
-        
+        DetectarRecurso();
     }
 }
