@@ -2,68 +2,104 @@ import java.util.Random;
 public class Recolectores extends Agentes{
     Random rand = new Random();
     public Recolectores(){
-        this.Tamaño = 1;
         this.Recurso = false;
         this.Amenaza = 1;
         this.EspaciosAmenaza = 10;
         this.Movimiento = "Derecha";
-        this.PosicionX= rand.nextInt(700+1);//Donde aparezcan
-        this.PosicionY= rand.nextInt(700+1);;
-        this.PosicionXrecurso=0;//Ubicación default fuera del 50x50
-        this.PosicionYrecurso=0;
+        this.PosicionX= rand.nextInt(50+1);//Donde aparezcan
+        this.PosicionY= rand.nextInt(50+1);
+        this.PosicionXrecurso=60;//Ubicación default fuera del 50x50
+        this.PosicionYrecurso=60;
         this.PosicionXbase=0;//Donde se encuentre la base
         this.PosicionYbase=0;
         this.posicion=0;
         this.siguiendo=0;
     }
 
-    public void DetectarRecurso(){
-        System.out.println(PosicionX);
-        System.out.println(PosicionY);
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+public boolean getRecurso(){
+    return Recurso;
+}
+public int getAmenaza(){
+    return Amenaza;
+}
+public int getEspaciosAmenaza(){
+    return EspaciosAmenaza;
+}
+public String getMovimiento(){
+    return Movimiento;
+}
+public int getPosicionX(){
+    return PosicionX;
+}
+public int getPosicionY(){
+    return PosicionY;
+}
+public int getPosicionXrecurso(){
+    return PosicionXrecurso;
+}
+public int getPosicionYrecurso(){
+    return PosicionYrecurso;
+}
+public void setPosicionXrecurso(int n){
+    PosicionXrecurso=n;
+}
+public void setPosicionYrecurso(int n){
+    PosicionYrecurso=n;
+}
+
+public void setposicion(int n){
+    posicion=n;
+}
+public void setsiguiendo(int cod){
+    siguiendo=cod;
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public int DetectarRecurso(int x,int y){
+        return -1;
     }
-    public void DetectarAgente(){
-        /*System.out.println("Tamaño");
-        System.out.println(Tamaño);
-        System.out.println("Recurso");
-        System.out.println(Recurso);
-        System.out.println("Amenaza");
-        System.out.println(Amenaza);
-        System.out.println("EspaciosAmenaza");
-        System.out.println(EspaciosAmenaza);
-        System.out.println("Movimiento");
-        System.out.println(Movimiento);
-        System.out.println("PosicionX");
-        System.out.println(PosicionX);
-        System.out.println("PosicionY");
-        System.out.println(PosicionY);
-        System.out.println("PosicionXrecurso");
-        System.out.println(PosicionXrecurso);
-        System.out.println("PosicionYrecurso");
-        System.out.println(PosicionYrecurso);
-        System.out.println("PosicionXbase");
-        System.out.println(PosicionXbase);
-        System.out.println("PosicionYbase");
-        System.out.println(PosicionYbase);
-        System.out.println("posicion");
-        System.out.println(posicion);
-        System.out.println("siguiendo");
-        System.out.println(siguiendo);*/
+    public int DetectarAgente(int x,int y){
+        return -1;
     }
-    public void DetectarAmenaza(){
-        DetectarRecurso();
+    public int DetectarAmenaza(int x,int y){
+        return -1;
     }
     public void AtacarRecurso(){
-        DetectarRecurso();
+        
     }
     public void MoverAgente(){
         if (Amenaza==1){//No se ah encontrado una amenaza
             if (Recurso==false){//no a encontrado recurso
-                if (PosicionXrecurso==900){//No le han pasado la hubicación de algún recurso
-                    if (rand.nextInt(2+1)==1){
-                        PosicionX=PosicionX+1;
+                if (PosicionXrecurso==60){//No le han pasado la hubicación de algún recurso
+                    while (true){//Evita que se salgan de pantalla
+                        switch (rand.nextInt(4+1)){
+                            case 1:
+                                if (PosicionX>0){
+                                PosicionX=PosicionX-1;
+                                Movimiento="Izquierda";
+                                break;
+                                }
+                            case 2:
+                                if (PosicionX<50){
+                                PosicionX=PosicionX+1;
+                                Movimiento="Derecha";
+                                break;
+                                }
+                            case 3:
+                                if (PosicionY>0){ 
+                                PosicionY=PosicionY-1;
+                                Movimiento="Arriba";
+                                break;
+                                }
+                            case 4:
+                                if (PosicionY<50){
+                                PosicionY=PosicionY+1;
+                                Movimiento="Abajo";
+                                break;
+                                }
+                        }
                     }
-                    else
-                        PosicionY=PosicionY+1;
                 }
                 else
                 {
@@ -113,7 +149,6 @@ public class Recolectores extends Agentes{
             }
             EspaciosAmenaza=EspaciosAmenaza-1;
         }
-
         //posiciones amenazas,recursos, agentes
     }
 }
