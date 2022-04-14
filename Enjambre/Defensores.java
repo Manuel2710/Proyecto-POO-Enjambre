@@ -6,6 +6,7 @@ public class Defensores extends Agentes{
         
         this.Recurso = false;
         this.Amenaza = 1;
+        this.obstaculo=" ";
         this.EspaciosAmenaza = 10;
         this.Movimiento = "Izquierda";
         this.PosicionX=rand.nextInt(50+1);//Donde aparezcan
@@ -83,6 +84,28 @@ public class Defensores extends Agentes{
     public void DetectarAmenaza(){
         Amenaza=3;
     }
+
+    public void DetectarObstaculo(int x, int y){
+        int comparacion = x-PosicionX;
+        switch(comparacion){
+            case 0:
+                obstaculo="Izquierda";
+            case 1:
+                obstaculo="Izquierda";
+            case -1:
+                obstaculo="Derecha";
+        }
+        comparacion = y-PosicionY;
+        switch(comparacion){
+            case 0:
+                obstaculo="Abajo";
+            case 1:
+                obstaculo="Arriba";
+            case -1:
+                obstaculo="Abajo";
+        }
+    }
+
     public void DetectarRecurso(int x,int y){
         Recurso=true;
         PosicionXrecurso=x;

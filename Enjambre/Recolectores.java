@@ -4,6 +4,7 @@ public class Recolectores extends Agentes{
     public Recolectores(){
         this.Recurso = false;
         this.Amenaza = 1;
+        this.obstaculo=" ";
         this.EspaciosAmenaza = 10;
         this.Movimiento = "Derecha";
         this.PosicionX= rand.nextInt(50+1);//Donde aparezcan
@@ -87,6 +88,27 @@ public void setposicion(int n){
 
     public void DetectarAmenaza(){
         Amenaza=2;
+    }
+
+    public void DetectarObstaculo(int x, int y){
+        int comparacion = x-PosicionX;
+        switch(comparacion){
+            case 0:
+                obstaculo="Izquierda";
+            case 1:
+                obstaculo="Izquierda";
+            case -1:
+                obstaculo="Derecha";
+        }
+        comparacion = y-PosicionY;
+        switch(comparacion){
+            case 0:
+                obstaculo="Abajo";
+            case 1:
+                obstaculo="Arriba";
+            case -1:
+                obstaculo="Abajo";
+        }
     }
 
     public void DetectarAgente(boolean rec, int Amen, int esp, String mov, int posXrec, int posYrec,int amenX, int amenY, int cod){

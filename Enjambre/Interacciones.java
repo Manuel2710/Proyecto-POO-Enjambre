@@ -5,6 +5,7 @@ public class Interacciones {
         ArrayList<Agentes> misAgentes = new ArrayList<>();  
         ArrayList<Atacante> misAtacantes = new ArrayList<>();  
         ArrayList<Recursos> misRecursos = new ArrayList<>(); 
+        ArrayList<Obstaculos> misObstaculos = new ArrayList<>();
         int x;
         int j;
         int cont =1;
@@ -20,6 +21,7 @@ public class Interacciones {
         for(x=0;x<cantObj;x++){
             misAtacantes.add(new Atacante());
             misRecursos.add(new Recursos());
+            misObstaculos.add(new Obstaculos());
         }
         cantAgent=cantAgent*2;//Como se agregaron de 2 en 2 se debe duplicar para correr toda la lista
         for(x=0;x<cantAgent;x++){
@@ -63,6 +65,7 @@ public class Interacciones {
             cont=0;
                         
         }
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////
         cod=-1;
         for(j=0;j<cantAgent;j++){//Detectar recurso
             for(x=0;x<cantObj;x++){
@@ -75,6 +78,17 @@ public class Interacciones {
             }
                 
         }
-        
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////
+        cod=-1;
+        for(j=0;j<cantAgent;j++){//Detectar obstaculo
+            for(x=0;x<cantObj;x++){
+                cod = misAgentes.get(j).DetectarCercanias(misObstaculos.get(x).getPosicionX(),misObstaculos.get(x).getPosicionY());
+                    if (cod!=-1){
+                        misAgentes.get(j).DetectarObstaculo(misObstaculos.get(x).getPosicionX(),misObstaculos.get(x).getPosicionY());
+                        cod=-1;
+                    }
+            }
+                
+        }
     }
 }

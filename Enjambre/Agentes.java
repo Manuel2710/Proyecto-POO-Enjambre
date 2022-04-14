@@ -1,6 +1,7 @@
 public abstract class Agentes {
     public boolean Recurso;
     public int Amenaza;
+    public String obstaculo; 
     public int EspaciosAmenaza;
     public String Movimiento;
     public int PosicionX=0;
@@ -29,6 +30,7 @@ public abstract class Agentes {
     
     public abstract int DetectarCercanias(int x,int y);//Obajetos,agentes,atacantes funciona con X y Y
     public abstract void DetectarRecurso(int x,int y);
+    public abstract void DetectarObstaculo(int x, int y);
     public abstract void AmenazaNoDetectada();
     public abstract void DetectarAmenaza();
     public abstract void DetectarAgente(boolean rec, int Amen, int esp, String mov, int posXrec, int posYrec, int cod, int amenX, int amenY);
