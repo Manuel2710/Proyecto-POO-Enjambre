@@ -19,15 +19,16 @@ public abstract class Agentes {
     public abstract int getPosicionX();
     public abstract int getPosicionY();
     public abstract int getPosicionXrecurso();
-    public abstract void setPosicionYrecurso(int n);
-    public abstract void setPosicionXrecurso(int n);
+    //public abstract void setPosicionYrecurso(int n);
+    //public abstract void setPosicionXrecurso(int n);
     public abstract int getPosicionYrecurso();
     public abstract void setposicion(int n);
-    public abstract void setsiguiendo(int cod);
+    //public abstract void setsiguiendo(int cod);
 
     public abstract int DetectarRecurso(int x,int y);
-    public abstract int DetectarAgente(int x,int y);
+    public abstract int DetectarCercanias(int x,int y);
     public abstract int DetectarAmenaza(int x,int y);
+    public abstract void ComparacionAgentes(boolean rec, int Amen, int esp, String mov, int posXrec, int posYrec, int cod);
     public abstract void AtacarRecurso();
     public abstract void MoverAgente();
 }

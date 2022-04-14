@@ -44,35 +44,57 @@ public class Defensores extends Agentes{
         return PosicionYrecurso;
     }
 
-    public void setPosicionXrecurso(int n){
-        PosicionXrecurso=n;
-    }
-    public void setPosicionYrecurso(int n){
-        PosicionYrecurso=n;
-    }
-
     public void setposicion(int n){
         posicion=n;
     }
-    public void setsiguiendo(int cod){
-        siguiendo=cod;
-    }
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public int DetectarRecurso(int x,int y){
         return -1;
     }
-    public int DetectarAgente(int x,int y){
+    public int DetectarCercanias(int x,int y){
+        int comparacion = x-PosicionX;
+        if (comparacion==0 || comparacion==1||comparacion==-1)//Esta en el mismo bloque una a la derecha o a la izquierda
+        {
+            return posicion;
+        }
+        else
+        {
+            comparacion = y-PosicionY;
+            if (comparacion==0 || comparacion==1||comparacion==-1){
+                return posicion;
+            }
+            else{
+                return -1;
+            }
+        }
+    }
+    public int DetectarAmenaza(int x,int y){
         return -1;
     }
     public void AtacarAmenaza(){
         //Ataca la amenaza
     }
 
-    public int DetectarAmenaza(int x,int y){
-        AtacarAmenaza();
-        return -1;
-    }
+    public void ComparacionAgentes(boolean rec, int Amen, int esp, String mov, int posXrec, int posYrec, int cod){
+    /*RecAme =  misAgentes.get(cod).getRecurso();
+                    if (RecAme==true){
+                        RecAme=false;
+                        RecAme =  misAgentes.get(x).getRecurso();
+                        if (RecAme!=true){
+                            posXRecAme=misAgentes.get(cod).getPosicionXrecurso();
+                            posYRecAme=misAgentes.get(cod).getPosicionYrecurso();
+                            misAgentes.get(x).setPosicionXrecurso(posXRecAme);
+                            misAgentes.get(x).setPosicionYrecurso(posYRecAme);
+                        }
+                        else{
+                            misAgentes.get(x).setsiguiendo(cod);
+                        }
+                    }*/
+        }
+
+
     public void AtacarRecurso(){
         //Ataca el recuros
     }

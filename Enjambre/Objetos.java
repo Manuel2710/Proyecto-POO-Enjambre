@@ -5,6 +5,6 @@ public abstract class Objetos {
         
         public abstract void PerderVida();
         public abstract void VolverAparecer();
-        public abstract int getPosiciónX();
-        public abstract  int getPosiciónY();
+        public abstract int getPosicionX();
+        public abstract  int getPosicionY();
 }

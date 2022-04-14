@@ -20,10 +20,11 @@ public class Atacante extends Objetos{
             PosicionY=rand.nextInt(50+1);
         }
     }
-    public int getPosiciónX(){
+
+    public int getPosicionX(){
         return PosicionX;
     }
-    public int getPosiciónY(){
+    public int getPosicionY(){
         return PosicionY;
     }
 }
