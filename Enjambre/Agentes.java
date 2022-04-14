@@ -8,7 +8,9 @@ public abstract class Agentes {
     public int PosicionXrecurso=0;
     public int PosicionYrecurso= 0;
     public int PosicionXbase=0;
-    public int PosicionYbase= 0;
+    public int PosicionYbase=0;
+    public int PosicionXAmenaza=0;
+    public int PosicionYAmenaza=0;
     public int posicion=0;
     public int siguiendo=0;
     
@@ -19,16 +21,16 @@ public abstract class Agentes {
     public abstract int getPosicionX();
     public abstract int getPosicionY();
     public abstract int getPosicionXrecurso();
-    //public abstract void setPosicionYrecurso(int n);
-    //public abstract void setPosicionXrecurso(int n);
     public abstract int getPosicionYrecurso();
+    public abstract int getPosicionXAmenaza();
+    public abstract int getPosicionYAmenaza();
     public abstract void setposicion(int n);
-    //public abstract void setsiguiendo(int cod);
 
-    public abstract int DetectarRecurso(int x,int y);
-    public abstract int DetectarCercanias(int x,int y);
-    public abstract int DetectarAmenaza(int x,int y);
-    public abstract void ComparacionAgentes(boolean rec, int Amen, int esp, String mov, int posXrec, int posYrec, int cod);
-    public abstract void AtacarRecurso();
+    
+    public abstract int DetectarCercanias(int x,int y);//Obajetos,agentes,atacantes funciona con X y Y
+    public abstract void DetectarRecurso(int x,int y);
+    public abstract void AmenazaNoDetectada();
+    public abstract void DetectarAmenaza();
+    public abstract void DetectarAgente(boolean rec, int Amen, int esp, String mov, int posXrec, int posYrec, int cod, int amenX, int amenY);
     public abstract void MoverAgente();
 }

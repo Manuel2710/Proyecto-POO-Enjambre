@@ -14,6 +14,8 @@ public class Defensores extends Agentes{
         this.PosicionYrecurso=60;
         this.PosicionXbase=0;//Donde se encuentre la base
         this.PosicionYbase=0;
+        this.PosicionXAmenaza=0;
+        this.PosicionYAmenaza=0;
         this.posicion=0;
         this.siguiendo=0;
     }
@@ -43,6 +45,12 @@ public class Defensores extends Agentes{
     public int getPosicionYrecurso(){
         return PosicionYrecurso;
     }
+    public int getPosicionXAmenaza(){
+        return PosicionXAmenaza;
+    }
+    public int getPosicionYAmenaza(){
+        return PosicionYAmenaza;
+    }
 
     public void setposicion(int n){
         posicion=n;
@@ -50,9 +58,7 @@ public class Defensores extends Agentes{
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public int DetectarRecurso(int x,int y){
-        return -1;
-    }
+    
     public int DetectarCercanias(int x,int y){
         int comparacion = x-PosicionX;
         if (comparacion==0 || comparacion==1||comparacion==-1)//Esta en el mismo bloque una a la derecha o a la izquierda
@@ -70,33 +76,50 @@ public class Defensores extends Agentes{
             }
         }
     }
-    public int DetectarAmenaza(int x,int y){
-        return -1;
-    }
-    public void AtacarAmenaza(){
-        //Ataca la amenaza
+    public void AmenazaNoDetectada(){
+        Amenaza=1;
     }
 
-    public void ComparacionAgentes(boolean rec, int Amen, int esp, String mov, int posXrec, int posYrec, int cod){
-    /*RecAme =  misAgentes.get(cod).getRecurso();
-                    if (RecAme==true){
-                        RecAme=false;
-                        RecAme =  misAgentes.get(x).getRecurso();
-                        if (RecAme!=true){
-                            posXRecAme=misAgentes.get(cod).getPosicionXrecurso();
-                            posYRecAme=misAgentes.get(cod).getPosicionYrecurso();
-                            misAgentes.get(x).setPosicionXrecurso(posXRecAme);
-                            misAgentes.get(x).setPosicionYrecurso(posYRecAme);
-                        }
-                        else{
-                            misAgentes.get(x).setsiguiendo(cod);
-                        }
-                    }*/
+    public void DetectarAmenaza(){
+        Amenaza=3;
+    }
+    public void DetectarRecurso(int x,int y){
+        Recurso=true;
+        PosicionXrecurso=x;
+        PosicionYrecurso=y;
+    }
+
+    public void DetectarAgente(boolean rec, int Amen, int esp, String mov, int posXrec, int posYrec,int amenX, int amenY, int cod){
+        if (rec==true){
+            if (Recurso==true){
+                siguiendo=cod;
+            }
+             else{
+                 PosicionXrecurso=posXrec;
+                 PosicionYrecurso=posYrec;
+            }
         }
-
-
-    public void AtacarRecurso(){
-        //Ataca el recuros
+        if (Amen==3){//atacando
+            Amenaza=3;
+            PosicionXAmenaza=amenX;
+            PosicionYAmenaza=amenY;
+            Movimiento=mov;
+        }
+        if (Amen==2){//huyendo
+            Amenaza=3;
+            PosicionXAmenaza=amenX;
+            PosicionYAmenaza=amenY;
+            switch (mov){
+                case "Izquierda":
+                    Movimiento="Derecha";
+                case "Derecha":
+                    Movimiento="Izquierda";
+                case "Arriba":
+                    Movimiento="Abajo";
+                case "Abajo":
+                    Movimiento="Arriba";
+            }
+        }
     }
     
     public void MoverAgente(){
