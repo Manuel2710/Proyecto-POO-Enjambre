@@ -10,6 +10,7 @@ public class Mapa implements ActionListener {
     JFrame ventana;
     JButton Interactuar;
     JPanel PanelBoton;
+    Interacciones Interaccion = new Interacciones();
 
     public Mapa(){
         ventana = new JFrame("Simulación");
@@ -37,7 +38,11 @@ public class Mapa implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
         if(e.getSource().equals(Interactuar)){
-
+            Interaccion.MoverAgente();
+            Interaccion.DetectarAgente();
+            Interaccion.DetectarAmenaza();
+            Interaccion.DetectarRecurso();
+            Interaccion.DetectarObstaculo();
         }
         
     }

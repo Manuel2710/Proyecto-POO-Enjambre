@@ -1,13 +1,17 @@
 import java.util.ArrayList;
-
+import java.awt.*;
 public class Interacciones {
-    public static void main(String[] args) throws Exception {
-        ArrayList<Agentes> misAgentes = new ArrayList<>();  
-        ArrayList<Atacante> misAtacantes = new ArrayList<>();  
-        ArrayList<Recursos> misRecursos = new ArrayList<>(); 
-        ArrayList<Obstaculos> misObstaculos = new ArrayList<>();
-        int x;
-        int j;
+    ArrayList<Agentes> misAgentes = new ArrayList<>();  
+    ArrayList<Atacante> misAtacantes = new ArrayList<>();  
+    ArrayList<Recursos> misRecursos = new ArrayList<>(); 
+    ArrayList<Obstaculos> misObstaculos = new ArrayList<>();
+    int x;
+    int j;
+    int cont;
+    int cod;
+    int cantAgent;
+    int cantObj;
+    public Interacciones() {
         int cont =1;
         int cod = -1;
         int cantAgent=10;
@@ -26,9 +30,24 @@ public class Interacciones {
         cantAgent=cantAgent*2;//Como se agregaron de 2 en 2 se debe duplicar para correr toda la lista
         for(x=0;x<cantAgent;x++){
             misAgentes.get(x).setposicion(x);
+            
         }
 
-        ///////////////////////////////////////////////////////////////////////////////////////
+    }
+
+    //////////////////////////////////////////AQUÍ
+    public void MoverAgente(){
+        for(x=0;x<cantAgent;x++){
+            misAgentes.get(x).MoverAgente();
+
+            public void Paint(Graphics ventana){
+                ventana.drawLine(misAgentes.get(x).getPosicionX(),misAgentes.get(x).getPosicionY(),misAgentes.get(x).getPosicionX(),misAgentes.get(x).getPosicionY());
+            }
+        }
+    }
+    ///////////////////////////////////////////AQUÍ
+
+    public void DetectarAgente(){
         for(x=0;x<cantAgent;x++){//Detectar agente
             for(j=0;j<cantAgent;j++){
                 if (j!=x){
@@ -46,7 +65,9 @@ public class Interacciones {
                 
         }
         cod=-1;
-        ////////////////////////////////////////////////////////////////////////////
+}
+
+    public void DetectarAmenaza(){
         for(j=0;j<cantAgent;j++){//Detectar atacante
             for(x=0;x<cantObj;x++){
                 cod = misAgentes.get(j).DetectarCercanias(misAtacantes.get(x).getPosicionX(),misAtacantes.get(x).getPosicionY());
@@ -61,12 +82,13 @@ public class Interacciones {
                             misAgentes.get(j).AmenazaNoDetectada();
                         }
                     }
-            }
-            cont=0;
-                        
+                }
+                cont=0;             
         }
-        //////////////////////////////////////////////////////////////////////////////////////////////////////////
         cod=-1;
+    }
+
+    public void DetectarRecurso(){
         for(j=0;j<cantAgent;j++){//Detectar recurso
             for(x=0;x<cantObj;x++){
                 cod = misAgentes.get(j).DetectarCercanias(misRecursos.get(x).getPosicionX(),misRecursos.get(x).getPosicionY());
@@ -78,8 +100,9 @@ public class Interacciones {
             }
                 
         }
-        //////////////////////////////////////////////////////////////////////////////////////////////////////////
         cod=-1;
+    }
+    public void DetectarObstaculo(){
         for(j=0;j<cantAgent;j++){//Detectar obstaculo
             for(x=0;x<cantObj;x++){
                 cod = misAgentes.get(j).DetectarCercanias(misObstaculos.get(x).getPosicionX(),misObstaculos.get(x).getPosicionY());
