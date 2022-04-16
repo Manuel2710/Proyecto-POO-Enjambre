@@ -33,10 +33,10 @@ public class Mapa implements ActionListener {
         ventana.setSize(500,500);
         ventana.setResizable(false);
         ventana.setVisible(true);
-        int cont =1;
-        int cod = -1;
-        int cantAgent=10;
-        int cantObj=2;
+        cont =1;
+        cod = -1;
+        cantAgent=10;
+        cantObj=2;
         //Mapa demo = new Mapa(); 
         for(x=0;x<cantAgent;x++){
             misAgentes.add(new Recolectores());
@@ -78,11 +78,12 @@ public class Mapa implements ActionListener {
                 misAgentes.get(x).MoverAgente();
                 if (misAgentes.get(x).getPosicionX()==0 & misAgentes.get(x).getPosicionY()==0){
                     misAgentes.get(x).Base();
+                    
+
                 }
-                //pintar punto= new pintar(misAgentes.get(x).getPosicionX(),misAgentes.get(x).getPosicionY());
+                pintar punto= new pintar(misAgentes.get(x).getPosicionX(),misAgentes.get(x).getPosicionY());
                 
             }
-    
             for(x=0;x<cantAgent;x++){//Detectar agente
                 for(j=0;j<cantAgent;j++){
                     if (j!=x){
@@ -100,7 +101,6 @@ public class Mapa implements ActionListener {
                     
             }
             cod=-1;
-    
             for(j=0;j<cantAgent;j++){//Detectar atacante
                 for(x=0;x<cantObj;x++){
                     cod = misAgentes.get(j).DetectarCercanias(misAtacantes.get(x).getPosicionX(),misAtacantes.get(x).getPosicionY());
@@ -119,7 +119,6 @@ public class Mapa implements ActionListener {
                     cont=0;             
             }
             cod=-1;
-    
             for(j=0;j<cantAgent;j++){//Detectar recurso
                 for(x=0;x<cantObj;x++){
                     cod = misAgentes.get(j).DetectarCercanias(misRecursos.get(x).getPosicionX(),misRecursos.get(x).getPosicionY());
@@ -132,7 +131,6 @@ public class Mapa implements ActionListener {
                     
             }
             cod=-1;
-    
             for(j=0;j<cantAgent;j++){//Detectar obstaculo
                 for(x=0;x<cantObj;x++){
                     cod = misAgentes.get(j).DetectarCercanias(misObstaculos.get(x).getPosicionX(),misObstaculos.get(x).getPosicionY());

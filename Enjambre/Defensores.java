@@ -152,8 +152,6 @@ public class Defensores extends Agentes{
         Amenaza = 1;
         EspaciosAmenaza = 10;
         Movimiento = "Derecha";
-        PosicionX=rand.nextInt(50+1);//Donde aparezcan
-        PosicionY=rand.nextInt(50+1);
         PosicionXrecurso=-1;//Ubicación default fuera del 50x50
         PosicionYrecurso=-1;
         PosicionXAmenaza=-1;
@@ -162,6 +160,7 @@ public class Defensores extends Agentes{
     }
     
     public void MoverAgente(){
+        boolean ciclo =true;
         if (Amenaza==1){//No se ah encontrado una amenaza
             if (Recurso==false){//no a encontrado recurso
                 if (PosicionXrecurso==-1){//No le han pasado la hubicación de algún recurso
@@ -183,26 +182,30 @@ public class Defensores extends Agentes{
                                 PosicionY=PosicionY+1;
                             }
                         }
-                    while (true){//En caso de que de un numero que lo vaya a sacar de pantalla
+                    while (ciclo){//En caso de que de un numero que lo vaya a sacar de pantalla
                         switch (rand.nextInt(4+1)){//Se estipula el proximo movimiento
                             case 1:
                                 if (PosicionX>0){
                                     Movimiento="Izquierda";
+                                    ciclo=false;
                                     break;
                                 }
                             case 2:
                                 if (PosicionX<50){
                                     Movimiento="Derecha";
+                                    ciclo=false;
                                     break;
                                 }
                             case 3:
                                 if (PosicionY>0){ 
                                     Movimiento="Arriba";
+                                    ciclo=false;
                                     break;
                                 }
                             case 4:
                                 if (PosicionY<50){
                                     Movimiento="Abajo";
+                                    ciclo=false;
                                     break;
                                 }
                         }
