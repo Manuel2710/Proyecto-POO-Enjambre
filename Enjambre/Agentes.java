@@ -26,13 +26,14 @@ public abstract class Agentes {
     public abstract int getPosicionXAmenaza();
     public abstract int getPosicionYAmenaza();
     public abstract void setposicion(int n);
-
+    public abstract int getsiguiendo();
     
     public abstract int DetectarCercanias(int x,int y);//Obajetos,agentes,atacantes funciona con X y Y
     public abstract void DetectarRecurso(int x,int y);
     public abstract void DetectarObstaculo(int x, int y);
+    public abstract void Base();
     public abstract void AmenazaNoDetectada();
     public abstract void DetectarAmenaza();
-    public abstract void DetectarAgente(boolean rec, int Amen, int esp, String mov, int posXrec, int posYrec, int cod, int amenX, int amenY);
+    public abstract void DetectarAgente(boolean rec, int Amen, int esp, String mov, int posXrec, int posYrec, int cod, int amenX,int sig, int amenY);
     public abstract void MoverAgente();
 }

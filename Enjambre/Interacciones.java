@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+/*import java.util.ArrayList;
 import java.awt.*;
 public class Interacciones {
     ArrayList<Agentes> misAgentes = new ArrayList<>();  
@@ -114,4 +114,4 @@ public class Interacciones {
                 
         }
     }
-}
+}*/

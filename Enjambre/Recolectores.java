@@ -2,21 +2,20 @@ import java.util.Random;
 public class Recolectores extends Agentes{
     Random rand = new Random();
     public Recolectores(){
-        this.Recurso = false;
-        this.Amenaza = 1;
-        this.obstaculo=" ";
-        this.EspaciosAmenaza = 10;
-        this.Movimiento = "Derecha";
-        this.PosicionX= rand.nextInt(50+1);//Donde aparezcan
-        this.PosicionY= rand.nextInt(50+1);
-        this.PosicionXrecurso=60;//Ubicación default fuera del 50x50
-        this.PosicionYrecurso=60;
-        this.PosicionXbase=0;//Donde se encuentre la base
-        this.PosicionYbase=0;
-        this.PosicionXAmenaza=0;
-        this.PosicionYAmenaza=0;
-        this.posicion=0;
-        this.siguiendo=0;
+        Recurso = false;
+        Amenaza = 1;
+        EspaciosAmenaza = 10;
+        Movimiento = "Derecha";
+        PosicionX= rand.nextInt(50+1);//Donde aparezcan
+        PosicionY= rand.nextInt(50+1);
+        PosicionXrecurso=-1;//Ubicación default fuera del 50x50
+        PosicionYrecurso=-1;
+        PosicionXbase=0;//Donde se encuentre la base
+        PosicionYbase=0;
+        PosicionXAmenaza=-1;
+        PosicionYAmenaza=-1;
+        posicion=0;
+        siguiendo=-1;
     }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -55,6 +54,10 @@ public void setposicion(int n){
     posicion=n;
 }
 
+public int getsiguiendo(){
+    return siguiendo;
+}
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     
@@ -84,6 +87,7 @@ public void setposicion(int n){
 
     public void AmenazaNoDetectada(){
         Amenaza=1;
+        EspaciosAmenaza=10;
     }
 
     public void DetectarAmenaza(){
@@ -94,27 +98,27 @@ public void setposicion(int n){
         int comparacion = x-PosicionX;
         switch(comparacion){
             case 0:
-                obstaculo="Izquierda";
+                Movimiento="Izquierda";
             case 1:
-                obstaculo="Izquierda";
+                Movimiento="Izquierda";
             case -1:
-                obstaculo="Derecha";
+                Movimiento="Derecha";
         }
         comparacion = y-PosicionY;
         switch(comparacion){
             case 0:
-                obstaculo="Abajo";
+                Movimiento="Abajo";
             case 1:
-                obstaculo="Arriba";
+                Movimiento="Arriba";
             case -1:
-                obstaculo="Abajo";
+                Movimiento="Abajo";
         }
     }
-
-    public void DetectarAgente(boolean rec, int Amen, int esp, String mov, int posXrec, int posYrec,int amenX, int amenY, int cod){
+    public void DetectarAgente(boolean rec, int Amen, int esp, String mov, int posXrec, int posYrec,int amenX, int amenY,int sig, int cod){
         if (rec==true){
-            if (Recurso==true){
+            if (Recurso==true & sig!=posicion){//Para que no se empicen a seguir entre ellos
                 siguiendo=cod;
+                Movimiento=mov;
             }
              else{
                  PosicionXrecurso=posXrec;
@@ -145,35 +149,63 @@ public void setposicion(int n){
         }
     }
 
+    public void Base(){
+        Recurso = false;
+        Amenaza = 1;
+        EspaciosAmenaza = 10;
+        Movimiento = "Derecha";
+        PosicionX=rand.nextInt(50+1);//Donde aparezcan
+        PosicionY=rand.nextInt(50+1);
+        PosicionXrecurso=-1;//Ubicación default fuera del 50x50
+        PosicionYrecurso=-1;
+        PosicionXAmenaza=-1;
+        PosicionYAmenaza=-1;
+        siguiendo=-1;
+    }
+
     public void MoverAgente(){
         if (Amenaza==1){//No se ah encontrado una amenaza
             if (Recurso==false){//no a encontrado recurso
-                if (PosicionXrecurso==60){//No le han pasado la hubicación de algún recurso
-                    while (true){//Evita que se salgan de pantalla
-                        switch (rand.nextInt(4+1)){
+                if (PosicionXrecurso==-1){//No le han pasado la hubicación de algún recurso
+                    switch (Movimiento){
+                        case "Izquierda":
+                            if (PosicionX>0){
+                                PosicionX=PosicionX-1;
+                            }
+                        case "Derecha":
+                            if (PosicionX<50){
+                                PosicionX=PosicionX+1;
+                            }
+                        case "Arriba":
+                            if (PosicionY>0){ 
+                                PosicionY=PosicionY-1;
+                            }
+                        case "Abajo":
+                            if (PosicionY<50){
+                                PosicionY=PosicionY+1;
+                            }
+                        }
+                    while (true){//En caso de que de un numero que lo vaya a sacar de pantalla
+                        switch (rand.nextInt(4+1)){//Se estipula el proximo movimiento
                             case 1:
                                 if (PosicionX>0){
-                                PosicionX=PosicionX-1;
-                                Movimiento="Izquierda";
-                                break;
+                                    Movimiento="Izquierda";
+                                    break;
                                 }
                             case 2:
                                 if (PosicionX<50){
-                                PosicionX=PosicionX+1;
-                                Movimiento="Derecha";
-                                break;
+                                    Movimiento="Derecha";
+                                    break;
                                 }
                             case 3:
                                 if (PosicionY>0){ 
-                                PosicionY=PosicionY-1;
-                                Movimiento="Arriba";
-                                break;
+                                    Movimiento="Arriba";
+                                    break;
                                 }
                             case 4:
                                 if (PosicionY<50){
-                                PosicionY=PosicionY+1;
-                                Movimiento="Abajo";
-                                break;
+                                    Movimiento="Abajo";
+                                    break;
                                 }
                         }
                     }
@@ -197,16 +229,10 @@ public void setposicion(int n){
                 }
             }
             else{
-                if (PosicionXbase>PosicionX){
-                    PosicionX=PosicionX+1;
-                }
                 if (PosicionXbase<PosicionX){
                     PosicionX=PosicionX-1;
                 }
                 if (PosicionXbase==PosicionX){
-                    if (PosicionYbase>PosicionY){
-                        PosicionY=PosicionY+1;
-                    }
                     if (PosicionYbase<PosicionY){
                         PosicionY=PosicionY-1;
                     }
@@ -214,18 +240,25 @@ public void setposicion(int n){
             }
         }
         else{//En caso de amenaza
-            switch (Movimiento){
-                case "Izquierda":
+            int comparacion = PosicionXAmenaza-PosicionX;
+            if (comparacion > 1){
                     PosicionX=PosicionX-1;
-                case "Derecha":
+                    Movimiento="Izquierda";
+            }
+            if (comparacion < 1){
                     PosicionX=PosicionX+1;
-                case "Arriba":
+                    Movimiento="Derecha";
+            }
+            comparacion = PosicionYAmenaza-PosicionY;
+            if (comparacion > 1){
                     PosicionY=PosicionY-1;
-                case "Abajo":
+                    Movimiento="Arriba";
+            }
+            if (comparacion < 1){
                     PosicionY=PosicionY+1;
+                    Movimiento="Abajo";
             }
             EspaciosAmenaza=EspaciosAmenaza-1;
-        }
-        //posiciones amenazas,recursos, agentes
+        }//Base
     }
 }
