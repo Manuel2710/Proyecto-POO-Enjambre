@@ -60,20 +60,18 @@ public int getsiguiendo(){
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    
-public int DetectarCercanias(int x,int y){
-    int comparacion = x-PosicionX;
-    if (comparacion==0 || comparacion==1||comparacion==-1)//Esta en el mismo bloque una a la derecha o a la izquierda
-    {
-        return posicion;
-    }
-    comparacion = y-PosicionY;
-    if (comparacion==0 || comparacion==1||comparacion==-1){
-        return posicion;
-    }
-    return -1;
 
-}
+public int DetectarCercanias(int x,int y){
+        int comparacion = x-PosicionX;
+        if (comparacion==0 || comparacion==1||comparacion==-1)//Esta en el mismo bloque una a la derecha o a la izquierda
+        {
+            comparacion = y-PosicionY;
+            if (comparacion==0 || comparacion==1||comparacion==-1){
+                return posicion;
+            }
+        }
+        return -1;
+    }
 
     public void DetectarRecurso(int x,int y){
         Recurso=true;
@@ -166,18 +164,22 @@ public int DetectarCercanias(int x,int y){
                         case "Izquierda":
                             if (PosicionX>0){
                                 PosicionX=PosicionX-1;
+                                break;
                             }
                         case "Derecha":
                             if (PosicionX<50){
                                 PosicionX=PosicionX+1;
+                                break;
                             }
                         case "Arriba":
                             if (PosicionY>0){ 
                                 PosicionY=PosicionY-1;
+                                break;
                             }
                         case "Abajo":
                             if (PosicionY<50){
                                 PosicionY=PosicionY+1;
+                                break;
                             }
                         }
                     while (ciclo){//En caso de que de un numero que lo vaya a sacar de pantalla
@@ -258,6 +260,6 @@ public int DetectarCercanias(int x,int y){
                     Movimiento="Abajo";
             }
             EspaciosAmenaza=EspaciosAmenaza-1;
-        }//Base
+        }
     }
 }

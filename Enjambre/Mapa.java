@@ -86,7 +86,7 @@ public class Mapa extends JFrame{
                 for(j=0;j<cantAgent;j++){//Detectar atacante
                     for(x=0;x<cantObj;x++){
                         cod = misAgentes.get(j).DetectarCercanias(misAtacantes.get(x).getPosicionX(),misAtacantes.get(x).getPosicionY());
-                            if (cod!=-1){
+                            if (cod!=-1 & misAgentes.get(j).getAmenaza()==3){
                                 System.out.println(j);
                                 System.out.println("Agente");
                                 System.out.println(x);
@@ -108,11 +108,7 @@ public class Mapa extends JFrame{
                 for(j=0;j<cantAgent;j++){//Detectar recurso
                     for(x=0;x<cantObj;x++){
                         cod = misAgentes.get(j).DetectarCercanias(misRecursos.get(x).getPosicionX(),misRecursos.get(x).getPosicionY());
-                            if (cod!=-1){
-                                System.out.println(j);
-                                System.out.println("Agente");
-                                System.out.println(x);
-                                System.out.println("Tomo recurso");
+                            if (cod!=-1 & misAgentes.get(j).getRecurso()==false){
                                 misRecursos.get(x).PerderVida();
                                 misAgentes.get(j).DetectarRecurso(misRecursos.get(x).getPosicionX(),misRecursos.get(x).getPosicionY());
                                 cod=-1;

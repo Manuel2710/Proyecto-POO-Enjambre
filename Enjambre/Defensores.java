@@ -61,19 +61,17 @@ public class Defensores extends Agentes{
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     
-    public int DetectarCercanias(int x,int y){
-        int comparacion = x-PosicionX;
-        if (comparacion==0 || comparacion==1||comparacion==-1)//Esta en el mismo bloque una a la derecha o a la izquierda
-        {
-            return posicion;
-        }
+public int DetectarCercanias(int x,int y){
+    int comparacion = x-PosicionX;
+    if (comparacion==0 || comparacion==1||comparacion==-1)//Esta en el mismo bloque una a la derecha o a la izquierda
+    {
         comparacion = y-PosicionY;
         if (comparacion==0 || comparacion==1||comparacion==-1){
             return posicion;
         }
-        return -1;
-
     }
+    return -1;
+}
     public void AmenazaNoDetectada(){
         Amenaza=1;
         EspaciosAmenaza=10;
@@ -164,18 +162,22 @@ public class Defensores extends Agentes{
                         case "Izquierda":
                             if (PosicionX>0){
                                 PosicionX=PosicionX-1;
+                                break;
                             }
                         case "Derecha":
                             if (PosicionX<50){
                                 PosicionX=PosicionX+1;
+                                break;
                             }
                         case "Arriba":
                             if (PosicionY>0){ 
                                 PosicionY=PosicionY-1;
+                                break;
                             }
                         case "Abajo":
                             if (PosicionY<50){
                                 PosicionY=PosicionY+1;
+                                break;
                             }
                         }
                     while (ciclo){//En caso de que de un numero que lo vaya a sacar de pantalla
@@ -238,6 +240,14 @@ public class Defensores extends Agentes{
         }
         else{//En caso de amenaza
             int comparacion = PosicionXAmenaza-PosicionX;
+            if (comparacion==0 || comparacion==1||comparacion==-1)//Esta en el mismo bloque una a la derecha o a la izquierda
+            {
+                comparacion = PosicionYAmenaza-PosicionY;
+                if (comparacion==0 || comparacion==1||comparacion==-1){
+                    return;
+                }
+            }
+            comparacion = PosicionXAmenaza-PosicionX;
             if (comparacion < 1){
                     PosicionX=PosicionX-1;
                     Movimiento="Izquierda";
@@ -256,6 +266,8 @@ public class Defensores extends Agentes{
                     Movimiento="Abajo";
             }
             EspaciosAmenaza=EspaciosAmenaza-1;
+            return;
+
         }
     }
 }
