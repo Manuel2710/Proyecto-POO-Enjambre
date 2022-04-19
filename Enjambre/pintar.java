@@ -1,14 +1,20 @@
-import java.awt.*;
-import javax.swing.*;
-public class pintar extends JComponent{
+import java.awt.Color;
+import java.awt.Graphics;
+public class Pintar {
     private int x;
     private int y;
-    public pintar(int x1, int y1){
-        x=x1;
-        y=y1;
+    private int dx;
+    private int dy;
+
+    public Pintar(int x, int y, int dx, int dy) {
+        this.x =x;
+        this.y = y;
+        this.dx = dx;
+        this.dy = dy;
     }
 
-    protected void Paint(Graphics g){;
-        g.drawLine(x,y,x,y);
-    }
+    public void desenhar (Graphics g) {
+        g.setColor (Color. BLACK) ;
+        g.drawRect(x, y, dx, dy);
+}
 }

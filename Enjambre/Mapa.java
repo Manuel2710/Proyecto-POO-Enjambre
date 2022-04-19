@@ -3,19 +3,24 @@ import java.awt.GridLayout;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.awt.*;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class Mapa implements ActionListener {
+
+    //private ListaPixeles painelGrafico;
+
     JFrame ventana;
     JButton Interactuar;
-    JPanel PanelBoton;
-    //Interacciones Interaccion = new Interacciones();
+    JPanel Panel;
+
     ArrayList<Agentes> misAgentes = new ArrayList<>();
     ArrayList<Atacante> misAtacantes = new ArrayList<>();
     ArrayList<Recursos> misRecursos = new ArrayList<>(); 
     ArrayList<Obstaculos> misObstaculos = new ArrayList<>();
+    
     int x;
     int j;
     int x1;
@@ -26,12 +31,13 @@ public class Mapa implements ActionListener {
     int cantObj;
 
     public Mapa(){
+        //PainelGrafico painelGrafico = new PainelGrafico();
         ventana = new JFrame("Simulación");
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         agregarComponentes();
-        ventana.setSize(500,500);
-        ventana.setResizable(false);
+        ventana.setSize(200,200);
+        //ventana.setResizable(false);
         ventana.setVisible(true);
         cont =1;
         cod = -1;
@@ -54,7 +60,7 @@ public class Mapa implements ActionListener {
             misAgentes.get(x).setposicion(x);
             
         }
-
+        
     }
 
 
@@ -62,26 +68,30 @@ public class Mapa implements ActionListener {
         Interactuar = new JButton("Interactuar");
         Interactuar.addActionListener(this);
 
-        PanelBoton = new JPanel();
-        PanelBoton.setLayout(new GridLayout(15, 1));
+        Panel = new JPanel();
+        Panel.setLayout(new GridLayout(15, 1));
 
-        PanelBoton.add(Interactuar);
+        Panel.add(Interactuar);
 
-        ventana.add(PanelBoton, BorderLayout.EAST);
+        ventana.add(Panel, BorderLayout.EAST);
 
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        /*Graphics g = ventana.getGraphics();
+        g.setColor(Color.BLACK);
+        g.drawRect(10, 50, 50, 50);
+        ventana.add(painelGrafico);*/
         if(e.getSource().equals(Interactuar)){
             for(x=0;x<cantAgent;x++){
                 misAgentes.get(x).MoverAgente();
                 if (misAgentes.get(x).getPosicionX()==0 & misAgentes.get(x).getPosicionY()==0){
                     misAgentes.get(x).Base();
-                    
-
                 }
-                pintar punto= new pintar(misAgentes.get(x).getPosicionX(),misAgentes.get(x).getPosicionY());
+                /*Quadrado q = new Quadrado(misAgentes.get(x).getPosicionX(), misAgentes.get(x).getPosicionY(), 1, 1);
+                painelGrafico.addQuadrado(q);*/
+                
                 
             }
             for(x=0;x<cantAgent;x++){//Detectar agente
@@ -144,4 +154,5 @@ public class Mapa implements ActionListener {
         }
         
     }
+    
 }
