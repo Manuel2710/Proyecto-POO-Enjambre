@@ -4,8 +4,8 @@ public class Obstaculos {
     int PosicionY;
     Random rand = new Random();
     public Obstaculos(){
-        int PosicionX=rand.nextInt(50+1);
-        int PosicionY=rand.nextInt(50+1);
+        PosicionX=rand.nextInt(50+1);
+        PosicionY=rand.nextInt(50+1);
     }
 
     public int getPosicionX(){

@@ -67,16 +67,12 @@ public class Defensores extends Agentes{
         {
             return posicion;
         }
-        else
-        {
-            comparacion = y-PosicionY;
-            if (comparacion==0 || comparacion==1||comparacion==-1){
-                return posicion;
-            }
-            else{
-                return -1;
-            }
+        comparacion = y-PosicionY;
+        if (comparacion==0 || comparacion==1||comparacion==-1){
+            return posicion;
         }
+        return -1;
+
     }
     public void AmenazaNoDetectada(){
         Amenaza=1;

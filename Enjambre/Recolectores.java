@@ -61,23 +61,19 @@ public int getsiguiendo(){
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     
-    public int DetectarCercanias(int x,int y){
-        int comparacion = x-PosicionX;
-        if (comparacion==0 || comparacion==1||comparacion==-1)//Esta en el mismo bloque una a la derecha o a la izquierda
-        {
-            return posicion;
-        }
-        else
-        {
-            comparacion = y-PosicionY;
-            if (comparacion==0 || comparacion==1||comparacion==-1){
-                return posicion;
-            }
-            else{
-                return -1;
-            }
-        }
+public int DetectarCercanias(int x,int y){
+    int comparacion = x-PosicionX;
+    if (comparacion==0 || comparacion==1||comparacion==-1)//Esta en el mismo bloque una a la derecha o a la izquierda
+    {
+        return posicion;
     }
+    comparacion = y-PosicionY;
+    if (comparacion==0 || comparacion==1||comparacion==-1){
+        return posicion;
+    }
+    return -1;
+
+}
 
     public void DetectarRecurso(int x,int y){
         Recurso=true;
@@ -162,7 +158,6 @@ public int getsiguiendo(){
     }
 
     public void MoverAgente(){
-        int Mov;
         boolean ciclo=true;
         if (Amenaza==1){//No se ah encontrado una amenaza
             if (Recurso==false){//no a encontrado recurso

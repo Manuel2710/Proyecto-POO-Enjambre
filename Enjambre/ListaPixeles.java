@@ -18,14 +18,14 @@ public class ListaPixeles extends JPanel {
 
         public void Eliminar() {
             pintar.remove (pintar.size() - 1);
-            repaint ();
+            repaint();
             }
 
         @Override
         protected void paintComponent(Graphics g){
             super.paintComponent(g);
             for (Pintar x: pintar){
-                x.desenhar(g);
+                x.PintarPixel(g);
         }
     }    
     }
