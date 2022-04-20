@@ -1,4 +1,5 @@
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -52,7 +53,7 @@ public class Mapa extends JFrame{
             @Override
             public void actionPerformed (ActionEvent e) {
                 if(x>0){
-                    for(x=0;x<(cantAgent+cantObj*3);x++){
+                    for(x=0;x<(1+cantAgent+cantObj*3);x++){
                         pixeles.Eliminar();
                     }
                 }
@@ -61,7 +62,7 @@ public class Mapa extends JFrame{
                     if (misAgentes.get(x).getPosicionX()==0 & misAgentes.get(x).getPosicionY()==0){
                         misAgentes.get(x).Base();
                     }
-                    Pintar q = new Pintar(misAgentes.get(x).getPosicionX(), misAgentes.get(x).getPosicionY(), 1, 1,0);
+                    Pintar q = new Pintar(misAgentes.get(x).getPosicionX(), misAgentes.get(x).getPosicionY(),1);
                     pixeles.Agregar(q);
                     
                     
@@ -129,28 +130,30 @@ public class Mapa extends JFrame{
                 }
 
                 for(x=0;x<cantObj;x++){//Pintar Atacante
-                    Pintar q = new Pintar(misAtacantes.get(x).getPosicionX(), misAtacantes.get(x).getPosicionY(), 2, 2,1);
+                    Pintar q = new Pintar(misAtacantes.get(x).getPosicionX(), misAtacantes.get(x).getPosicionY(),2);
                     pixeles.Agregar(q);
                 }
 
                 for(x=0;x<cantObj;x++){//Pintar Recurso
-                    Pintar q = new Pintar(misRecursos.get(x).getPosicionX(), misRecursos.get(x).getPosicionY(), 2, 2,2);
+                    Pintar q = new Pintar(misRecursos.get(x).getPosicionX(), misRecursos.get(x).getPosicionY(),3);
                     pixeles.Agregar(q);
                 }
 
                 for(x=0;x<cantObj;x++){//Pintar Obstaculo
-                    Pintar q = new Pintar(misObstaculos.get(x).getPosicionX(), misObstaculos.get(x).getPosicionY(), 2, 2,3);
+                    Pintar q = new Pintar(misObstaculos.get(x).getPosicionX(), misObstaculos.get(x).getPosicionY(),4);
                     pixeles.Agregar(q);
                 }
+                Pintar q = new Pintar(0,0,0);
+                pixeles.Agregar(q);
             }
         });
         add(pixeles);
         add(crearpixel,BorderLayout.NORTH);
     }
     public static void main(String[] args){
-        JFrame fAPP = new Mapa();
-        fAPP.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        fAPP.setSize(200,200);
-        fAPP.setVisible(true);
+        JFrame ventana = new Mapa();
+        ventana.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        ventana.setSize(700,700);
+        ventana.setVisible(true);
     }
 }
