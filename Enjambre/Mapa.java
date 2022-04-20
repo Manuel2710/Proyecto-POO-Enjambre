@@ -28,8 +28,8 @@ public class Mapa extends JFrame{
         JButton crearpixel = new JButton("Interactuar");
         cont =1;
         cod = -1;
-        cantAgent=10;
-        cantObj=2;
+        cantAgent=20;
+        cantObj=6;
         for(x=0;x<cantAgent;x++){
             misAgentes.add(new Recolectores());
             misAgentes.add(new Defensores());
@@ -52,9 +52,16 @@ public class Mapa extends JFrame{
         crearpixel.addActionListener (new ActionListener () {    
             @Override
             public void actionPerformed (ActionEvent e) {
+                
                 if(x>0){
                     for(x=0;x<(4+cantAgent+cantObj*12);x++){
                         pixeles.Eliminar();
+                    }
+                }
+                for (j=0;j<51;j++){
+                    for(x=0;x<51;x++){//Pintar Atacante
+                        Pintar q = new Pintar(x, j,5);
+                        pixeles.Agregar(q);
                     }
                 }
                 for(x=0;x<cantAgent;x++){
@@ -88,7 +95,7 @@ public class Mapa extends JFrame{
                     for(x=0;x<cantObj;x++){
                         cod = misAgentes.get(j).DetectarCercanias(misAtacantes.get(x).getPosicionX1(),misAtacantes.get(x).getPosicionY1());
                             if (cod!=-1){
-                                misAgentes.get(j).DetectarAmenaza();
+                                misAgentes.get(j).DetectarAmenaza(misAtacantes.get(x).getPosicionX1(),misAtacantes.get(x).getPosicionY1());
                                 if (misAgentes.get(j).getAmenaza()==3){
                                     misAtacantes.get(x).PerderVida(); 
                                 }
@@ -102,7 +109,7 @@ public class Mapa extends JFrame{
                             }
                         cod = misAgentes.get(j).DetectarCercanias(misAtacantes.get(x).getPosicionX2(),misAtacantes.get(x).getPosicionY2());
                             if (cod!=-1){
-                                misAgentes.get(j).DetectarAmenaza();
+                                misAgentes.get(j).DetectarAmenaza(misAtacantes.get(x).getPosicionX2(),misAtacantes.get(x).getPosicionY2());
                                 if (misAgentes.get(j).getAmenaza()==3){
                                     misAtacantes.get(x).PerderVida(); 
                                 }
@@ -116,7 +123,7 @@ public class Mapa extends JFrame{
                             }
                         cod = misAgentes.get(j).DetectarCercanias(misAtacantes.get(x).getPosicionX3(),misAtacantes.get(x).getPosicionY3());
                             if (cod!=-1){
-                                misAgentes.get(j).DetectarAmenaza();
+                                misAgentes.get(j).DetectarAmenaza(misAtacantes.get(x).getPosicionX3(),misAtacantes.get(x).getPosicionY3());
                                 if (misAgentes.get(j).getAmenaza()==3){
                                     misAtacantes.get(x).PerderVida(); 
                                 }
@@ -130,7 +137,7 @@ public class Mapa extends JFrame{
                             }
                         cod = misAgentes.get(j).DetectarCercanias(misAtacantes.get(x).getPosicionX4(),misAtacantes.get(x).getPosicionY4());
                             if (cod!=-1){
-                                misAgentes.get(j).DetectarAmenaza();
+                                misAgentes.get(j).DetectarAmenaza(misAtacantes.get(x).getPosicionX4(),misAtacantes.get(x).getPosicionY4());
                                 if (misAgentes.get(j).getAmenaza()==3){
                                     misAtacantes.get(x).PerderVida(); 
                                 }

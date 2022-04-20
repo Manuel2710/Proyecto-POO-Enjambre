@@ -38,6 +38,10 @@ public class Pintar {
                 g.setColor (Color.BLUE) ;
                 g.fillRect(x, y, dx, dy);
                 break;
+            case 5:
+                g.setColor (Color.BLACK) ;
+                g.drawRect(x, y, dx, dy);
+                break;
         }
         
 }

@@ -4,6 +4,7 @@ public class Recolectores extends Agentes{
     public Recolectores(){
         Recurso = false;
         Amenaza = 1;
+        Obstaculo=false;
         EspaciosAmenaza = 10;
         Movimiento = "Derecha";
         PosicionX= rand.nextInt(50+1);//Donde aparezcan
@@ -84,28 +85,39 @@ public int DetectarCercanias(int x,int y){
         EspaciosAmenaza=10;
     }
 
-    public void DetectarAmenaza(){
+    public void DetectarAmenaza(int x,int y){
         Amenaza=2;
+        PosicionXAmenaza=x;
+        PosicionYAmenaza=y;
     }
 
     public void DetectarObstaculo(int x, int y){
         int comparacion = x-PosicionX;
-        switch(comparacion){
-            case 0:
-                Movimiento="Izquierda";
-            case 1:
-                Movimiento="Izquierda";
-            case -1:
-                Movimiento="Derecha";
+        if (comparacion==0){
+            comparacion = y-PosicionY;
+            switch(comparacion){
+                case 0:
+                    Movimiento="Izquierda";
+                case 1:
+                    Movimiento="Izquierda";
+                case -1:
+                    Movimiento="Derecha";
+            }
+            Obstaculo=true;
         }
-        comparacion = y-PosicionY;
-        switch(comparacion){
-            case 0:
-                Movimiento="Abajo";
-            case 1:
-                Movimiento="Arriba";
-            case -1:
-                Movimiento="Abajo";
+        else{
+            if (y-PosicionY==0){//Confirmación por los perpediculares
+            switch(comparacion){
+                case 0:
+                    Movimiento="Abajo";
+                case 1:
+                    Movimiento="Arriba";
+                case -1:
+                    Movimiento="Abajo";
+            }
+            Obstaculo=true;
+        }
+            
         }
     }
     public void DetectarAgente(boolean rec, int Amen, int esp, String mov, int posXrec, int posYrec,int amenX, int amenY,int sig, int cod){
@@ -125,7 +137,7 @@ public int DetectarCercanias(int x,int y){
             PosicionXAmenaza=amenX;//En caso de encontrarse con otro defensor pasarle el dato
             PosicionYAmenaza=amenY;
             Movimiento=mov;
-        }
+        } 
         if (Amen==3){//atacando
             Amenaza=2;
             PosicionXAmenaza=amenX;
@@ -157,9 +169,10 @@ public int DetectarCercanias(int x,int y){
 
     public void MoverAgente(){
         boolean ciclo=true;
-        if (Amenaza==1){//No se ah encontrado una amenaza
-            if (Recurso==false){//no a encontrado recurso
-                if (PosicionXrecurso==-1){//No le han pasado la hubicación de algún recurso
+        if (Amenaza==1 || Obstaculo==true){//No se ah encontrado una amenaza
+            if (Recurso==false || Obstaculo==true){//no a encontrado recurso
+                if (PosicionXrecurso==-1 || Obstaculo==true){//No le han pasado la hubicación de algún recurso
+                    Obstaculo=false;
                     switch (Movimiento){
                         case "Izquierda":
                             if (PosicionX>0){
@@ -226,6 +239,11 @@ public int DetectarCercanias(int x,int y){
                         if (PosicionYrecurso<PosicionY){
                             PosicionY=PosicionY-1;
                         }
+                    }
+                    //En caso de que este buscando un recurso pero este ya no esta
+                    if (PosicionXrecurso==PosicionX & PosicionYrecurso==PosicionY & Recurso==false){
+                        PosicionXrecurso=-1;
+                        PosicionYrecurso=-1;
                     }
                 }
             }
