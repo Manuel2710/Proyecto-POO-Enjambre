@@ -30,7 +30,7 @@ public abstract class Agentes {
     
     public abstract int DetectarCercanias(int x,int y);//Obajetos,agentes,atacantes funciona con X y Y
     public abstract void DetectarRecurso(int x,int y);
-    public abstract void DetectarObstaculo(int x, int y);
+    public abstract void DetectarObstaculo(int x, int y,int x4, int y4);
     public abstract void Base();
     public abstract void AmenazaNoDetectada();
     public abstract void DetectarAmenaza(int x, int y);

@@ -1,5 +1,4 @@
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -103,12 +102,12 @@ public class Mapa extends JFrame{
                                 cod=-1;
                             }
                             else{
-                                if (cont!=1){
+                                if (cont<1){
                                     misAgentes.get(j).AmenazaNoDetectada();
                                 }
                             }
                         cod = misAgentes.get(j).DetectarCercanias(misAtacantes.get(x).getPosicionX2(),misAtacantes.get(x).getPosicionY2());
-                            if (cod!=-1){
+                            if (cod!=-1 & cont==0){
                                 misAgentes.get(j).DetectarAmenaza(misAtacantes.get(x).getPosicionX2(),misAtacantes.get(x).getPosicionY2());
                                 if (misAgentes.get(j).getAmenaza()==3){
                                     misAtacantes.get(x).PerderVida(); 
@@ -117,26 +116,26 @@ public class Mapa extends JFrame{
                                 cod=-1;
                             }
                             else{
-                                if (cont!=1){
+                                if (cont<1){
                                     misAgentes.get(j).AmenazaNoDetectada();
                                 }
                             }
                         cod = misAgentes.get(j).DetectarCercanias(misAtacantes.get(x).getPosicionX3(),misAtacantes.get(x).getPosicionY3());
-                            if (cod!=-1){
+                            if (cod!=-1 & cont==0){
                                 misAgentes.get(j).DetectarAmenaza(misAtacantes.get(x).getPosicionX3(),misAtacantes.get(x).getPosicionY3());
                                 if (misAgentes.get(j).getAmenaza()==3){
-                                    misAtacantes.get(x).PerderVida(); 
+                                    misAtacantes.get(x).PerderVida();
                                 }
                                 cont=cont+1;
                                 cod=-1;
                             }
                             else{
-                                if (cont!=1){
+                                if (cont<1){
                                     misAgentes.get(j).AmenazaNoDetectada();
                                 }
                             }
                         cod = misAgentes.get(j).DetectarCercanias(misAtacantes.get(x).getPosicionX4(),misAtacantes.get(x).getPosicionY4());
-                            if (cod!=-1){
+                            if (cod!=-1 & cont==0){
                                 misAgentes.get(j).DetectarAmenaza(misAtacantes.get(x).getPosicionX4(),misAtacantes.get(x).getPosicionY4());
                                 if (misAgentes.get(j).getAmenaza()==3){
                                     misAtacantes.get(x).PerderVida(); 
@@ -145,12 +144,12 @@ public class Mapa extends JFrame{
                                 cod=-1;
                             }
                             else{
-                                if (cont!=1){
+                                if (cont<1){
                                     misAgentes.get(j).AmenazaNoDetectada();
                                 }
                             }
                         }
-                        cont=0;             
+                        cont=0;//Sirve para que no le quite 2 o más veces vida al mismo objeto y para verificar de manera general si se encontro un atacante
                 }
                 cod=-1;
                 for(j=0;j<cantAgent;j++){//Detectar recurso
@@ -187,22 +186,22 @@ public class Mapa extends JFrame{
                     for(x=0;x<cantObj;x++){
                         cod = misAgentes.get(j).DetectarCercanias(misObstaculos.get(x).getPosicionX1(),misObstaculos.get(x).getPosicionY1());
                             if (cod!=-1){
-                                misAgentes.get(j).DetectarObstaculo(misObstaculos.get(x).getPosicionX1(),misObstaculos.get(x).getPosicionY1());
+                                misAgentes.get(j).DetectarObstaculo(misObstaculos.get(x).getPosicionX1(),misObstaculos.get(x).getPosicionY1(),misObstaculos.get(x).getPosicionX4(),misObstaculos.get(x).getPosicionY4());
                                 cod=-1;
                             }
                         cod = misAgentes.get(j).DetectarCercanias(misObstaculos.get(x).getPosicionX2(),misObstaculos.get(x).getPosicionY2());
                             if (cod!=-1){
-                                misAgentes.get(j).DetectarObstaculo(misObstaculos.get(x).getPosicionX2(),misObstaculos.get(x).getPosicionY2());
+                                misAgentes.get(j).DetectarObstaculo(misObstaculos.get(x).getPosicionX2(),misObstaculos.get(x).getPosicionY2(),misObstaculos.get(x).getPosicionX4(),misObstaculos.get(x).getPosicionY4());
                                 cod=-1;
                             }
                         cod = misAgentes.get(j).DetectarCercanias(misObstaculos.get(x).getPosicionX3(),misObstaculos.get(x).getPosicionY3());
                             if (cod!=-1){
-                                misAgentes.get(j).DetectarObstaculo(misObstaculos.get(x).getPosicionX3(),misObstaculos.get(x).getPosicionY3());
+                                misAgentes.get(j).DetectarObstaculo(misObstaculos.get(x).getPosicionX3(),misObstaculos.get(x).getPosicionY3(),misObstaculos.get(x).getPosicionX4(),misObstaculos.get(x).getPosicionY4());
                                 cod=-1;
                             }
                         cod = misAgentes.get(j).DetectarCercanias(misObstaculos.get(x).getPosicionX4(),misObstaculos.get(x).getPosicionY4());
                             if (cod!=-1){
-                                misAgentes.get(j).DetectarObstaculo(misObstaculos.get(x).getPosicionX4(),misObstaculos.get(x).getPosicionY4());
+                                misAgentes.get(j).DetectarObstaculo(misObstaculos.get(x).getPosicionX4(),misObstaculos.get(x).getPosicionY4(),misObstaculos.get(x).getPosicionX4(),misObstaculos.get(x).getPosicionY4());
                                 cod=-1;
                             }
                     }
@@ -257,7 +256,7 @@ public class Mapa extends JFrame{
     public static void main(String[] args){
         JFrame ventana = new Mapa();
         ventana.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        ventana.setSize(700,700);
+        ventana.setSize(530,580);
         ventana.setVisible(true);
     }
 }

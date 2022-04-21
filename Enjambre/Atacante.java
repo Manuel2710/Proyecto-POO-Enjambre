@@ -21,7 +21,7 @@ public class Atacante extends Objetos{
     }
     public void VolverAparecer(){
         if (Vida==0){
-            Vida =10;
+            Vida = 10;
             PosicionX1=rand.nextInt(50+1);
             PosicionY1=rand.nextInt(50+1);
             PosicionX2=PosicionX1+1;
@@ -31,6 +31,7 @@ public class Atacante extends Objetos{
             PosicionX4=PosicionX1+1;
             PosicionY4=PosicionY1-1;
         }
+        return;
     }
 
     public int getPosicionX1(){

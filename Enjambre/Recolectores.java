@@ -81,8 +81,10 @@ public int DetectarCercanias(int x,int y){
     }
 
     public void AmenazaNoDetectada(){
-        Amenaza=1;
-        EspaciosAmenaza=10;
+        if (EspaciosAmenaza==0){
+            Amenaza=1;
+            EspaciosAmenaza=10;
+        }
     }
 
     public void DetectarAmenaza(int x,int y){
@@ -91,17 +93,29 @@ public int DetectarCercanias(int x,int y){
         PosicionYAmenaza=y;
     }
 
-    public void DetectarObstaculo(int x, int y){
+    public void DetectarObstaculo(int x, int y, int x4, int y4){
         int comparacion = x-PosicionX;
+        if(x-PosicionX==1 & y-PosicionY==1){
+            return;
+        }
         if (comparacion==0){
             comparacion = y-PosicionY;
             switch(comparacion){
                 case 0:
-                    Movimiento="Izquierda";
+                    Movimiento="Abajo";
+                    break;
                 case 1:
-                    Movimiento="Izquierda";
+                    Movimiento="Arriba";
+                    break;
                 case -1:
-                    Movimiento="Derecha";
+                    Movimiento="Abajo";
+                    break;
+            }
+            if (PosicionX==0 || PosicionX==1 & x4==1){
+                Movimiento="Derecha";
+            }
+            if (PosicionX==49 || PosicionX==50 & x4==50){
+                Movimiento="Izquierda";
             }
             Obstaculo=true;
         }
@@ -110,10 +124,19 @@ public int DetectarCercanias(int x,int y){
             switch(comparacion){
                 case 0:
                     Movimiento="Abajo";
+                    break;
                 case 1:
                     Movimiento="Arriba";
+                    break;
                 case -1:
                     Movimiento="Abajo";
+                    break;
+            }
+            if (PosicionY==0 || PosicionY==1 & y4==1){
+                Movimiento="Abajo";
+            }
+            if (PosicionY==49 || PosicionY==50 & y4==50){
+                Movimiento="Arriba";
             }
             Obstaculo=true;
         }
@@ -260,20 +283,20 @@ public int DetectarCercanias(int x,int y){
         }
         else{//En caso de amenaza
             int comparacion = PosicionXAmenaza-PosicionX;
-            if (comparacion > 1){
+            if (comparacion > 1 & PosicionX>0){
                     PosicionX=PosicionX-1;
                     Movimiento="Izquierda";
             }
-            if (comparacion < 1){
+            if (comparacion < 1 & PosicionX<50){
                     PosicionX=PosicionX+1;
                     Movimiento="Derecha";
             }
             comparacion = PosicionYAmenaza-PosicionY;
-            if (comparacion > 1){
+            if (comparacion > 1 & PosicionY>0){
                     PosicionY=PosicionY-1;
                     Movimiento="Arriba";
             }
-            if (comparacion < 1){
+            if (comparacion < 1 & PosicionY<50){
                     PosicionY=PosicionY+1;
                     Movimiento="Abajo";
             }
