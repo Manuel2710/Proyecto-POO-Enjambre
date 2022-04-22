@@ -15,8 +15,6 @@ public class Mapa extends JFrame{
     
     int x;
     int j;
-    int x1;
-    int y1;
     int cont;
     int cod;
     int cantAgent;
@@ -45,6 +43,12 @@ public class Mapa extends JFrame{
             misAgentes.get(x).setposicion(x);
             
         }
+        for (j=0;j<51;j++){
+            for(x=0;x<51;x++){//Pintar Atacante
+                Pintar q = new Pintar(x, j,5);
+                pixeles.Agregar(q);
+            }
+        }
         x=0;
         
     
@@ -57,12 +61,7 @@ public class Mapa extends JFrame{
                         pixeles.Eliminar();
                     }
                 }
-                for (j=0;j<51;j++){
-                    for(x=0;x<51;x++){//Pintar Atacante
-                        Pintar q = new Pintar(x, j,5);
-                        pixeles.Agregar(q);
-                    }
-                }
+                
                 for(x=0;x<cantAgent;x++){
                     misAgentes.get(x).MoverAgente();
                     if (misAgentes.get(x).getPosicionX()==0 & misAgentes.get(x).getPosicionY()==0){

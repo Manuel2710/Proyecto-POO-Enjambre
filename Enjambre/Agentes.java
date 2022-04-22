@@ -34,6 +34,6 @@ public abstract class Agentes {
     public abstract void Base();
     public abstract void AmenazaNoDetectada();
     public abstract void DetectarAmenaza(int x, int y);
-    public abstract void DetectarAgente(boolean rec, int Amen, int esp, String mov, int posXrec, int posYrec, int cod, int amenX,int sig, int amenY);
+    public abstract void DetectarAgente(boolean rec, int Amen, int esp, String mov, int posXrec, int posYrec,int amenX, int amenY,int sig, int cod);
     public abstract void MoverAgente();
 }
