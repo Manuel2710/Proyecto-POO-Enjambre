@@ -1,13 +1,13 @@
 import java.awt.Color;
 import java.awt.Graphics;
-public class Pintar {
+public class pintar {
     private int x;//Posición x
     private int y;//Posición y
     private int dx;//Dimensiones
     private int dy;
     private int who;//Color, bordes o completo
 
-    public Pintar(int x, int y, int who) {
+    public pintar(int x, int y, int who) {
         this.x = x*10;
         this.y = y*10;
         this.dx = 10;
