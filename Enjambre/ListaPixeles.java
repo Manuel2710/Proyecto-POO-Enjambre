@@ -5,13 +5,13 @@ import java.util.List;
 import javax.swing.JPanel;
 
 public class ListaPixeles extends JPanel {
-        private List<Pintar> pintar;
+        private List<pintar> pintar;
         //Crea una lista
         public ListaPixeles() {
-            pintar = new ArrayList<Pintar>();
+            pintar = new ArrayList<pintar>();
     }
         //Agrega el nuevo elemento a la lista
-        public void Agregar(Pintar x) {
+        public void Agregar(pintar x) {
             pintar.add (x);
             repaint();
     }
@@ -24,7 +24,7 @@ public class ListaPixeles extends JPanel {
         @Override
         protected void paintComponent(Graphics g){
             super.paintComponent(g);
-            for (Pintar x: pintar){
+            for (pintar x: pintar){
                 x.PintarPixel(g);
         }
     }    

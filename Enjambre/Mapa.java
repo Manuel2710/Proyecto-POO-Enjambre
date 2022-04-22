@@ -51,7 +51,7 @@ public class Mapa extends JFrame{
         //Se imprime el tablero
         for (j=0;j<51;j++){
             for(x=0;x<51;x++){
-                Pintar q = new Pintar(x, j,5);
+                pintar q = new pintar(x, j,5);
                 pixeles.Agregar(q);
             }
         }
@@ -74,7 +74,7 @@ public class Mapa extends JFrame{
                     if (misAgentes.get(x).getPosicionX()==0 & misAgentes.get(x).getPosicionY()==0){
                         misAgentes.get(x).Base();
                     }
-                    Pintar q = new Pintar(misAgentes.get(x).getPosicionX(), misAgentes.get(x).getPosicionY(),1);
+                    pintar q = new pintar(misAgentes.get(x).getPosicionX(), misAgentes.get(x).getPosicionY(),1);
                     pixeles.Agregar(q);
                     
                     
@@ -223,42 +223,42 @@ public class Mapa extends JFrame{
                 }
 
                 for(x=0;x<cantObj;x++){//Pintar Atacante
-                    Pintar q = new Pintar(misAtacantes.get(x).getPosicionX1(), misAtacantes.get(x).getPosicionY1(),2);
+                    pintar q = new pintar(misAtacantes.get(x).getPosicionX1(), misAtacantes.get(x).getPosicionY1(),2);
                     pixeles.Agregar(q);
-                    Pintar q1 = new Pintar(misAtacantes.get(x).getPosicionX2(), misAtacantes.get(x).getPosicionY2(),2);
+                    pintar q1 = new pintar(misAtacantes.get(x).getPosicionX2(), misAtacantes.get(x).getPosicionY2(),2);
                     pixeles.Agregar(q1);
-                    Pintar q2 = new Pintar(misAtacantes.get(x).getPosicionX3(), misAtacantes.get(x).getPosicionY3(),2);
+                    pintar q2 = new pintar(misAtacantes.get(x).getPosicionX3(), misAtacantes.get(x).getPosicionY3(),2);
                     pixeles.Agregar(q2);
-                    Pintar q3 = new Pintar(misAtacantes.get(x).getPosicionX4(), misAtacantes.get(x).getPosicionY4(),2);
+                    pintar q3 = new pintar(misAtacantes.get(x).getPosicionX4(), misAtacantes.get(x).getPosicionY4(),2);
                     pixeles.Agregar(q3);
                 }
 
                 for(x=0;x<cantObj;x++){//Pintar Recurso
-                    Pintar q = new Pintar(misRecursos.get(x).getPosicionX1(), misRecursos.get(x).getPosicionY1(),3);
+                    pintar q = new pintar(misRecursos.get(x).getPosicionX1(), misRecursos.get(x).getPosicionY1(),3);
                     pixeles.Agregar(q);
-                    Pintar q1 = new Pintar(misRecursos.get(x).getPosicionX2(), misRecursos.get(x).getPosicionY2(),3);
+                    pintar q1 = new pintar(misRecursos.get(x).getPosicionX2(), misRecursos.get(x).getPosicionY2(),3);
                     pixeles.Agregar(q1);
-                    Pintar q2 = new Pintar(misRecursos.get(x).getPosicionX3(), misRecursos.get(x).getPosicionY3(),3);
+                    pintar q2 = new pintar(misRecursos.get(x).getPosicionX3(), misRecursos.get(x).getPosicionY3(),3);
                     pixeles.Agregar(q2);
-                    Pintar q3 = new Pintar(misRecursos.get(x).getPosicionX4(), misRecursos.get(x).getPosicionY4(),3);
+                    pintar q3 = new pintar(misRecursos.get(x).getPosicionX4(), misRecursos.get(x).getPosicionY4(),3);
                     pixeles.Agregar(q3);
                 }
 
                 for(x=0;x<cantObj;x++){//Pintar Obstaculo
-                    Pintar q = new Pintar(misObstaculos.get(x).getPosicionX1(), misObstaculos.get(x).getPosicionY1(),4);
+                    pintar q = new pintar(misObstaculos.get(x).getPosicionX1(), misObstaculos.get(x).getPosicionY1(),4);
                     pixeles.Agregar(q);
-                    Pintar q1 = new Pintar(misObstaculos.get(x).getPosicionX2(), misObstaculos.get(x).getPosicionY2(),4);
+                    pintar q1 = new pintar(misObstaculos.get(x).getPosicionX2(), misObstaculos.get(x).getPosicionY2(),4);
                     pixeles.Agregar(q1);
-                    Pintar q2 = new Pintar(misObstaculos.get(x).getPosicionX3(), misObstaculos.get(x).getPosicionY3(),4);
+                    pintar q2 = new pintar(misObstaculos.get(x).getPosicionX3(), misObstaculos.get(x).getPosicionY3(),4);
                     pixeles.Agregar(q2);
-                    Pintar q3 = new Pintar(misObstaculos.get(x).getPosicionX4(), misObstaculos.get(x).getPosicionY4(),4);
+                    pintar q3 = new pintar(misObstaculos.get(x).getPosicionX4(), misObstaculos.get(x).getPosicionY4(),4);
                     pixeles.Agregar(q3);
                 }
                 //Pintar base
-                Pintar q = new Pintar(0,0,0);
-                Pintar q1 = new Pintar(1,0,0);
-                Pintar q2 = new Pintar(0,1,0);
-                Pintar q3 = new Pintar(1,1,0);
+                pintar q = new pintar(0,0,0);
+                pintar q1 = new pintar(1,0,0);
+                pintar q2 = new pintar(0,1,0);
+                pintar q3 = new pintar(1,1,0);
                 pixeles.Agregar(q);
                 pixeles.Agregar(q1);
                 pixeles.Agregar(q2);
