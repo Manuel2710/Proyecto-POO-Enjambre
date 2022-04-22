@@ -4,7 +4,7 @@ public class Atacante extends Objetos{
     Random rand = new Random();
     public Atacante(){
         this.Vida=10;
-        this.PosicionX1=rand.nextInt(50+1);//Donde aparezcan
+        this.PosicionX1=rand.nextInt(50+1);
         this.PosicionY1=rand.nextInt(50+1);
         this.PosicionX2=PosicionX1+1;
         this.PosicionY2=PosicionY1;
@@ -19,6 +19,7 @@ public class Atacante extends Objetos{
         Vida=Vida-1;
         VolverAparecer();
     }
+    //Se restablece la vida y se genera una nueva ubicación
     public void VolverAparecer(){
         if (Vida==0){
             Vida = 10;
@@ -33,7 +34,7 @@ public class Atacante extends Objetos{
         }
         return;
     }
-
+    //Retornan las posiciones
     public int getPosicionX1(){
         return PosicionX1;
     }

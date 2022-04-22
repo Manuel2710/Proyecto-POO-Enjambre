@@ -1,11 +1,11 @@
 import java.awt.Color;
 import java.awt.Graphics;
 public class Pintar {
-    private int x;
-    private int y;
-    private int dx;
+    private int x;//Posición x
+    private int y;//Posición y
+    private int dx;//Dimensiones
     private int dy;
-    private int who;
+    private int who;//Color, bordes o completo
 
     public Pintar(int x, int y, int who) {
         this.x = x*10;
@@ -14,32 +14,31 @@ public class Pintar {
         this.dy = 10;
         this.who=who;
     }
-
+    //Pinta los cubos en la ventana
     public void PintarPixel (Graphics g) {
-        switch (who){/*Sé que se deberia evitar este tipo de codigo pero era esto o
-                        escribir otros 6 archivos con practicamente el mismo codigo*/
+        switch (who){
             case 0:
-                g.setColor (Color.YELLOW) ;
+                g.setColor (Color.YELLOW) ;//Base
                 g.fillRect(x, y, dx, dy);
                 break;
             case 1:
-                g.setColor (Color.BLACK) ;
+                g.setColor (Color.BLACK) ;//Agente
                 g.fillRect(x, y, dx, dy);
                 break;
             case 2:
-                g.setColor (Color.RED) ;
+                g.setColor (Color.RED) ;//Atacante
                 g.fillRect(x, y, dx, dy);
                 break;
             case 3:
-                g.setColor (Color.GREEN) ;
+                g.setColor (Color.GREEN) ;//Recurso
                 g.fillRect(x, y, dx, dy);
                 break;
             case 4:
-                g.setColor (Color.BLUE) ;
+                g.setColor (Color.BLUE) ;//Obstaculo
                 g.fillRect(x, y, dx, dy);
                 break;
             case 5:
-                g.setColor (Color.BLACK) ;
+                g.setColor (Color.BLACK) ;//Tablero
                 g.drawRect(x, y, dx, dy);
                 break;
         }

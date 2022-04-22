@@ -1,19 +1,19 @@
 public abstract class Agentes {
-    public boolean Recurso;
-    public int Amenaza;
-    public boolean Obstaculo; 
-    public int EspaciosAmenaza;
-    public String Movimiento;
-    public int PosicionX=0;
-    public int PosicionY= 0;
-    public int PosicionXrecurso=0;
-    public int PosicionYrecurso= 0;
-    public int PosicionXbase=0;
-    public int PosicionYbase=0;
-    public int PosicionXAmenaza=0;
-    public int PosicionYAmenaza=0;
-    public int posicion=0;
-    public int siguiendo=0;
+    public boolean Recurso;//Si posee recurso
+    public int Amenaza;//Si a detectado amenaza
+    public boolean Obstaculo;//Si tiene un obstaculo a la par
+    public int EspaciosAmenaza;//Espacio a moverse en caso de amenaza
+    public String Movimiento;//Siguiente movimiento a realizar
+    public int PosicionX;//Posición en los ejes x,y 
+    public int PosicionY;
+    public int PosicionXrecurso;//Posición de recurso encontrado
+    public int PosicionYrecurso;
+    public int PosicionXbase;//Posición de la base
+    public int PosicionYbase;
+    public int PosicionXAmenaza;//Posición de amenaza encontrada
+    public int PosicionYAmenaza;
+    public int posicion;//Lugar en la lista de objetos
+    public int siguiendo;//Agente siguiendo
     
     public abstract boolean getRecurso();
     public abstract int getAmenaza();
@@ -28,7 +28,7 @@ public abstract class Agentes {
     public abstract void setposicion(int n);
     public abstract int getsiguiendo();
     
-    public abstract int DetectarCercanias(int x,int y);//Obajetos,agentes,atacantes funciona con X y Y
+    public abstract int DetectarCercanias(int x,int y);//Objetos,agentes,atacantes funciona con X y Y
     public abstract void DetectarRecurso(int x,int y);
     public abstract void DetectarObstaculo(int x, int y,int x4, int y4);
     public abstract void Base();

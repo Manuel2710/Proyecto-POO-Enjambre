@@ -1,12 +1,12 @@
 import java.util.Random;
 public class Obstaculos {
-    int PosicionX1;
+    int PosicionX1;//Posición del cubo de la izquierda superior
     int PosicionY1;
-    int PosicionX2;
+    int PosicionX2;//Posición del cubo de la derecha superior
     int PosicionY2;
-    int PosicionX3;
+    int PosicionX3;//Posición del cubo de la izquierda inferior
     int PosicionY3;
-    int PosicionX4;
+    int PosicionX4;//Posición del cubo de la derecha inferior
     int PosicionY4;
     Random rand = new Random();
     public Obstaculos(){
@@ -19,7 +19,8 @@ public class Obstaculos {
         this.PosicionX4=PosicionX1+1;
         this.PosicionY4=PosicionY1-1;
     }
-
+    
+    //Retornan las posiciones
     public int getPosicionX1(){
         return PosicionX1;
     }

@@ -7,18 +7,18 @@ public class Recolectores extends Agentes{
         Obstaculo=false;
         EspaciosAmenaza = 10;
         Movimiento = "Derecha";
-        PosicionX= rand.nextInt(50+1);//Donde aparezcan
+        PosicionX= rand.nextInt(50+1);
         PosicionY= rand.nextInt(50+1);
-        PosicionXrecurso=-1;//Ubicación default fuera del 50x50
+        PosicionXrecurso=-1;
         PosicionYrecurso=-1;
-        PosicionXbase=0;//Donde se encuentre la base
+        PosicionXbase=0;
         PosicionYbase=0;
         PosicionXAmenaza=-1;
         PosicionYAmenaza=-1;
         posicion=0;
         siguiendo=-1;
     }
-
+//los get retornan un valor y lo establecen 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 public boolean getRecurso(){
     return Recurso;
@@ -61,7 +61,7 @@ public int getsiguiendo(){
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
+//Compara las coordenas recibidas con las del agentes
 public int DetectarCercanias(int x,int y){
         int comparacion = x-PosicionX;
         if (comparacion==0 || comparacion==1||comparacion==-1)//Esta en el mismo bloque una a la derecha o a la izquierda
@@ -73,26 +73,26 @@ public int DetectarCercanias(int x,int y){
         }
         return -1;
     }
-
+    //Establece que lleva recurso y registra la ubicación
     public void DetectarRecurso(int x,int y){
         Recurso=true;
         PosicionXrecurso=x;
         PosicionYrecurso=y;
     }
-
+    //Restablece los atributos
     public void AmenazaNoDetectada(){
         if (EspaciosAmenaza==0){
             Amenaza=1;
             EspaciosAmenaza=10;
         }
     }
-
+    //Cambia los atributos a huyendo de amenaza
     public void DetectarAmenaza(int x,int y){
         Amenaza=2;
         PosicionXAmenaza=x;
         PosicionYAmenaza=y;
     }
-
+    //Compara la posición del agente con respecto al obstaculo para ver que movimiento hacer
     public void DetectarObstaculo(int x, int y, int x4, int y4){
         int comparacion = x-PosicionX;
         if(x-PosicionX==1 & y-PosicionY==1){
@@ -143,6 +143,7 @@ public int DetectarCercanias(int x,int y){
             
         }
     }
+    //Transfiere la información recibida a los atributos
     public void DetectarAgente(boolean rec, int Amen, int esp, String mov, int posXrec, int posYrec,int amenX, int amenY,int sig, int cod){
         if (rec==true){
             if (Recurso==true & sig!=posicion){//Para que no se empicen a seguir entre ellos
@@ -177,7 +178,7 @@ public int DetectarCercanias(int x,int y){
             }
         }
     }
-
+    //Restablece los valores a los originales
     public void Base(){
         Recurso = false;
         Amenaza = 1;
@@ -189,7 +190,7 @@ public int DetectarCercanias(int x,int y){
         PosicionYAmenaza=-1;
         siguiendo=-1;
     }
-
+    //Cambia los datos de x, y según el orden de prioridad
     public void MoverAgente(){
         boolean ciclo=true;
         if (Amenaza==1 || Obstaculo==true){//No se ah encontrado una amenaza

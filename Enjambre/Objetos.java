@@ -1,12 +1,12 @@
 public abstract class Objetos {
-    public int Vida;
-    public int PosicionX1;
+    public int Vida;//Cantidad de veces que se puede interactuar con el
+    public int PosicionX1;//Posición del cubo de la izquierda superior
     public int PosicionY1;
-    public int PosicionX2;
+    public int PosicionX2;//Posición del cubo de la derecha superior
     public int PosicionY2;
-    public int PosicionX3;
+    public int PosicionX3;//Posición del cubo de la izquierda inferior
     public int PosicionY3;
-    public int PosicionX4;
+    public int PosicionX4;//Posición del cubo de la derecha inferior
     public int PosicionY4;
 
         
